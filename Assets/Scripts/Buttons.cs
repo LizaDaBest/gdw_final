@@ -10,6 +10,7 @@ public class Buttons : MonoBehaviour
     public Button startButton;
     public Button optionsButton;
     public Button exitButton;
+    public Button backButton;
     public bool isGameActive;
     void Start()
     {
@@ -17,6 +18,7 @@ public class Buttons : MonoBehaviour
         btn.onClick.AddListener(StartGame);
         btn.onClick.AddListener(OptionsMenu);
         btn.onClick.AddListener(ExitGame);
+        btn.onClick.AddListener(BackButton);
     }
 
     // main menu and option buttons
@@ -36,7 +38,10 @@ public class Buttons : MonoBehaviour
         Application.Quit();
     }
 
-    
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Title Screen");
+    }
 
     void Update()
     {
