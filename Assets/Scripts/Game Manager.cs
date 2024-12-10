@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI coinsCounter;
     public TextMeshProUGUI btnText;
     public TextMeshProUGUI superbtnText;
+    public TextMeshProUGUI endgameTimer;
     // This is the slider object, do not use the TextMeshPro object, they are different.
     public UnityEngine.UI.Slider healthSlider;
     public float coins;
@@ -23,24 +24,29 @@ public class GameManager : MonoBehaviour
     public GameObject coin;
     public bool isGameActive = false;
     private float spawnRate = 5.0f;
-    private float zSpawnPos = -10;
+    private float zSpawnPos = -30;
     private GameManager gameManager;
-    private float xRange = 90;
+    private float xRange = 65;
     private float ySpawnPos = -30;
     private float upgradeCost;
-    private int superhitCost;
+    private float superhitCost;
     private float coinPerSecond = 1;
     private float count = 0;
     public float damageTime = 3;
     public GameObject Enemy;
     public float enemySpawnRate = 1.0f;
+    public float timerseconds = 5.0f;
+    public float minutes;
+    public float seconds;
 
     void Start()
     {
         coins = 0;
         UpdateCoins(0);
+        //StartCoroutine(UpdateTimer(0));
         StartCoroutine(CoinPassive());
         StartCoroutine(SpawnCoins());
+       // Time();
         isGameActive = true;
         upgradeCost = 5;
         superhitCost = 50;
@@ -59,6 +65,17 @@ public class GameManager : MonoBehaviour
         coinsCounter.text = "Coins: " + coins;
     }
 
+   // IEnumerator UpdateTimer(float scoreToAdd)
+  //  {
+      //  while (true)
+       // {
+            
+         //   endgameTimer.text = "Time: " + minutes + ":" + seconds;
+
+       // }
+       
+  //  }
+
     IEnumerator CoinPassive()
     {
         while (true)
@@ -67,6 +84,16 @@ public class GameManager : MonoBehaviour
             UpdateCoins(coinPerSecond);
         }
     }
+
+    //IEnumerator Time()
+    //{
+       // if (coins >= Mathf.Infinity)
+       // {
+         //   yield return new WaitForSeconds(timerseconds);
+          //  SceneManager.LoadScene("Main Game");
+
+       // }
+   // }
 
     // spawns coins
 
@@ -101,12 +128,14 @@ public class GameManager : MonoBehaviour
     // superhit cost
     public void SuperHit()
     {
-        if (coins > superhitCost)
+        if (coins >= superhitCost)
         {
+            count++;
             coins -= superhitCost;
-            superhitCost *= 2;
+            superhitCost *= Mathf.Pow(2f, count/(2+count));
+            superhitCost = UnityEngine.Mathf.Round(superhitCost);
             superbtnText.text = ("Superhit Cost: " +  superhitCost);
-            coinPerSecond += superhitCost;
+            coinPerSecond += 1.2f + (coinPerSecond / (count / 2));
         }
     }
 

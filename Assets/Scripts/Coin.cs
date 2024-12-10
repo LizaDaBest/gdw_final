@@ -13,12 +13,16 @@ public class Coin : MonoBehaviour
     private float maxTorque = 50;
     private GameManager gameManager;
     private int upgradeCost;
+    public float seconds = 5.0f;
+   // private float count = 0;
+    private float coinPerSecond = 1;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(RandomForce(), ForceMode.Impulse);
         rb.AddTorque(RandomForce(), ForceMode.Impulse);
         gameManager = GameObject.FindAnyObjectByType<GameManager>();
+      //  StartCoroutine(CoinValue());
     }
     Vector3 RandomForce()
     {
@@ -44,8 +48,20 @@ public class Coin : MonoBehaviour
         //Debug.Log(gameManager.isGameActive);
         if (gameManager.isGameActive)
         {
-            gameManager.coins += 30;
+            gameManager.coins += 30 + Mathf.Pow(2f,3*coinPerSecond);
             Destroy(this.gameObject);
+            
         }
     }
+
+    //IEnumerator CoinValue()
+   // {
+      //  if (this.gameObject == true)
+     //   {
+           // yield return new WaitForSeconds(seconds);
+         //   Debug.Log("Woah!");
+         //  yield return gameManager.coins *= Mathf.Pow(2f, count / (2 + count));
+
+       // }
+    //}
 }

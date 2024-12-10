@@ -11,6 +11,7 @@ public class Buttons : MonoBehaviour
     public Button optionsButton;
     public Button exitButton;
     public Button backButton;
+    public Button resetButton;
     public bool isGameActive;
     void Start()
     {
@@ -19,6 +20,7 @@ public class Buttons : MonoBehaviour
         btn.onClick.AddListener(OptionsMenu);
         btn.onClick.AddListener(ExitGame);
         btn.onClick.AddListener(BackButton);
+        btn.onClick.AddListener(ResetButton);
     }
 
     // main menu and option buttons
@@ -41,6 +43,11 @@ public class Buttons : MonoBehaviour
     public void BackButton()
     {
         SceneManager.LoadScene("Title Screen");
+    }
+
+    public void ResetButton()
+    {
+        SceneManager.LoadScene("Main Game");
     }
 
     void Update()
