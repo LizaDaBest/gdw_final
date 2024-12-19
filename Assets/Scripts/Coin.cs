@@ -48,7 +48,8 @@ public class Coin : MonoBehaviour
         //Debug.Log(gameManager.isGameActive);
         if (gameManager.isGameActive)
         {
-            gameManager.coins += 30 + Mathf.Pow(2f,3*coinPerSecond);
+            gameManager.coins += 30 + Mathf.Pow(gameManager.currentCoinsClicked, 2+(gameManager.currentCoinsClicked*0.1f));
+            gameManager.currentCoinsClicked++;
             Destroy(this.gameObject);
             
         }

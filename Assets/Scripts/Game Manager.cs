@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI btnText;
     public TextMeshProUGUI superbtnText;
     public TextMeshProUGUI endgameTimer;
+    public TextMeshProUGUI coinspersecond;
     // This is the slider object, do not use the TextMeshPro object, they are different.
     public UnityEngine.UI.Slider healthSlider;
     public float coins;
@@ -31,13 +33,16 @@ public class GameManager : MonoBehaviour
     private float upgradeCost;
     private float superhitCost;
     private float coinPerSecond = 1;
-    private float count = 0;
+    private float upgradeCount = 0;
+    private float hitCount = 0;
     public float damageTime = 3;
     public GameObject Enemy;
     public float enemySpawnRate = 1.0f;
     public float timerseconds = 5.0f;
     public float minutes;
     public float seconds;
+    public int currentCoinsClicked;
+    private int secondsElapsed;
 
     void Start()
     {
@@ -46,6 +51,7 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(UpdateTimer(0));
         StartCoroutine(CoinPassive());
         StartCoroutine(SpawnCoins());
+        StartCoroutine(GainPerSec());
        // Time();
         isGameActive = true;
         upgradeCost = 5;
@@ -60,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCoins(float scoreToAdd)
     {
-        coins += scoreToAdd;
+        coins += coinPerSecond;
         coins = UnityEngine.Mathf.Round(coins);
         coinsCounter.text = "Coins: " + coins;
     }
@@ -99,13 +105,13 @@ public class GameManager : MonoBehaviour
 
     Vector3 RandomSpawnPos()
     {
-        return new Vector3(Random.Range(-xRange, xRange), ySpawnPos, zSpawnPos);
+        return new Vector3(UnityEngine.Random.Range(-xRange, xRange), ySpawnPos, zSpawnPos);
     }
     IEnumerator SpawnCoins()
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(spawnRate/(1+(hitCount*0.2f)));
 
             GameObject c = Instantiate(coin, RandomSpawnPos(), coin.transform.rotation);
             
@@ -117,12 +123,12 @@ public class GameManager : MonoBehaviour
     {
         if (coins >= upgradeCost)
         {
-            count++;
+            upgradeCount++;
             coins -= upgradeCost;
-            upgradeCost *= Mathf.Pow(2f, (count/(2+count)));
+            upgradeCost *= Mathf.Pow(2f, (upgradeCount / (2 + upgradeCount)));
             upgradeCost = UnityEngine.Mathf.Round(upgradeCost);
             btnText.text = ( "Upgrade Cost: " + upgradeCost);
-            coinPerSecond += 1.2f+(coinPerSecond/(count/2));
+            coinPerSecond += Mathf.Round(1.2f+(coinPerSecond/ (upgradeCount / 2)));
         }
     }
     // superhit cost
@@ -130,12 +136,22 @@ public class GameManager : MonoBehaviour
     {
         if (coins >= superhitCost)
         {
-            count++;
+            hitCount++;
             coins -= superhitCost;
-            superhitCost *= Mathf.Pow(2f, count/(2+count));
+            superhitCost *= Mathf.Pow(2f, hitCount / (2 + hitCount));
             superhitCost = UnityEngine.Mathf.Round(superhitCost);
             superbtnText.text = ("Superhit Cost: " +  superhitCost);
-            coinPerSecond += 1.2f + (coinPerSecond / (count / 2));
+        }
+    }
+
+    public IEnumerator GainPerSec()
+    {
+
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            secondsElapsed++;
+
         }
     }
 
@@ -183,6 +199,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //StartCoroutine(Damage());
-
+        coinspersecond.text = ("Coins Per Second: " + coinPerSecond);
     }
 }

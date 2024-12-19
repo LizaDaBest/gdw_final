@@ -183,8 +183,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f32a875933094ce49881e152d53fc2a2, type: 2}
+  m_sharedMaterial: {fileID: 6727039123597820284, guid: f32a875933094ce49881e152d53fc2a2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -411,8 +411,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f32a875933094ce49881e152d53fc2a2, type: 2}
+  m_sharedMaterial: {fileID: 6727039123597820284, guid: f32a875933094ce49881e152d53fc2a2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -973,8 +973,8 @@ MonoBehaviour:
 
     Idle Game'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ccc574a704ef5d14c9ca8b2fe2b3c65f, type: 2}
+  m_sharedMaterial: {fileID: 3922203862262240362, guid: ccc574a704ef5d14c9ca8b2fe2b3c65f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1169,6 +1169,7 @@ MonoBehaviour:
   optionsButton: {fileID: 0}
   exitButton: {fileID: 0}
   backButton: {fileID: 0}
+  resetButton: {fileID: 0}
   isGameActive: 0
 --- !u!1 &1999203203
 GameObject:
