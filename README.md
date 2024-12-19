@@ -4,7 +4,7 @@ Title: Super Duper Wuper Idle Game
 Genre: Idle Game
 Description: See how fast you can reach the maximum money you can make, as the princess does like her coins, but you...not quite yet. Race against your buddies and time yourselves to try to beat your own high scores.​ (not very super duper wuper, but certainly a faint attempt at being wuper.) Created for GDW at Fitchburg State University for my final solo game project.
 
-Total Hours Spent: 29
+Total Hours Spent: 33
 
 Basic Goals:
 Basic set of buttons that function when clicked with mouse (UI) (done)
@@ -73,3 +73,28 @@ Added original princess asset just to include it for visual purposes
 Build game for WebGL, Windows, Mac, and Linux Build
 Recorded 1 minute video and uploaded to Youtube
 Took screenshots for itch.io
+
+Day 7 (4 hours)
+Want to:
+Add a tiny animation somewhere using sprite renderer to replace another sprite (probably simple blinking animations that occur every few seconds, if time allows then eyes looking to side occasionally as well)
+Fix falling coin exponential value (do research)
+Fix UI scaling for buttons (particularly pay attention to Windows Build)
+Rebuild both WebGL and Windows builds
+Separate WebGL from regular build by removing exit buttons
+Remake YouTube video
+Redo some screenshots
+Add a display under coin counter that says how many coins is being made per second
+Add a sort of exciting surprise in terms of being interactable to hold the player’s attention (perhaps lots of spawning coins occasionally or on button press… or something else?)
+Make upgrade button exponential increase bigger/faster overall (coins on coin counter get too small compared to upgrade buttons at around 50,000 mark, need to experiment with values)
+
+Completed:
+Added fonts to all buttons and text UI elements
+Added a spawn rate to the falling coins whenever superhit button is pressed, eventually making a lot of coins
+Fixed falling coin exponential value
+Added a coins per second counter
+Fixed and tweaked equations for number of coins being made
+Redid some screenshots
+Remade video and uploaded to Youtube and itch.io
+Remade WebGL and Windows builds
+
+Done! (for now?)
